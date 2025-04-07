@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Student</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Create / Edit Student</h2>
+    <form th:action="@{/save}" th:object="${student}" method="post" class="mt-4">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label>Student Name</label>
+            <input type="text" th:field="*{studentname}" class="form-control" placeholder="Student Name" required />
+        </div>
+
+        <div class="form-group">
+            <label>Course</label>
+            <input type="text" th:field="*{course}" class="form-control" placeholder="Course" required />
+        </div>
+
+        <div class="form-group">
+            <label>Fee</label>
+            <input type="number" th:field="*{fee}" class="form-control" placeholder="Fee" required />
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        <a th:href="@{/}" class="btn btn-secondary">Back</a>
+    </form>
+</div>
+</body>
+</html>
+

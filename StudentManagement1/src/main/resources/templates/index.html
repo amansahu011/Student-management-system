@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container mt-4">
+    <h2 class="text-center">Spring Boot CRUD System - Student Registration</h2>
+    <div class="text-left mb-3">
+        <a class="btn btn-primary" th:href="@{/new}">Add New</a>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>Student ID</th>
+            <th>Student Name</th>
+            <th>Course</th>
+            <th>Fee</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${liststudent}">
+            <td th:text="${student.id}">ID</td>
+            <td th:text="${student.studentname}">Name</td>
+            <td th:text="${student.course}">Course</td>
+            <td th:text="${student.fee}">Fee</td>
+            <td><a class="btn btn-warning btn-sm" th:href="@{'/edit/' + ${student.id}}">Edit</a></td>
+            <td><a class="btn btn-danger btn-sm" th:href="@{'/delete/' + ${student.id}}"
+                   onclick="return confirm('Are you sure?');">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
